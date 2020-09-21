@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+
+const initialForm = {
+  ingredients: "",
+};
 
 const AddRecipes = () => {
-  return <>Add Recipe Form</>;
+  const [form, setform] = useState(initialForm);
+  return (
+    <>
+      <form>
+        <label>
+          Ingredient:
+          <input type="text"  />
+        </label>
+        <button>Add Recipe</button>
+      </form>
+    </>
+  );
 };
 export default AddRecipes;
