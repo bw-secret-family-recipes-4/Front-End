@@ -1,0 +1,19 @@
+*{
+    text-align: center;
+}
+
+.links{
+    display: flex;
+    width: 100%;
+    /* justify-items: center; */
+    flex-direction: row;
+
+}
+.links div{
+    width: 30%;
+}
+
+
+h1{
+    width: 100%;
+}
