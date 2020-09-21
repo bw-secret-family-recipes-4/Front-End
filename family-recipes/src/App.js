@@ -5,13 +5,15 @@ import Signup from "./components/Signup";
 import Dashboard from "./dashboardComponents/Dashboard";
 import RecipeEdit from "./dashboardComponents/RecipeEdit";
 import AddRecipes from "./dashboardComponents/FamilyRecipesForm";
-import Home from "./components/Home";
 
 import "./App.css";
+import Home from "./components/Home";
 
 function App() {
   return (
-    <>
+    <><div>
+      {/* {!Home ? } */}
+    </div>
       <Home />
       <Switch>
         <Route path="/login" component={Login} />
@@ -19,7 +21,7 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/edit" component={RecipeEdit} />
         <Route path="/addRecipes" component={AddRecipes} />
-        <Route path="/home" />
+        <Route path="" />
       </Switch>
     </>
   );

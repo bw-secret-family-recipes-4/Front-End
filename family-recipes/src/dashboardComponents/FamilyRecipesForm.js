@@ -6,12 +6,17 @@ const initialForm = {
 
 const AddRecipes = () => {
   const [form, setform] = useState(initialForm);
+
+const submit = () =>{
+    setform(initialForm)
+}
+
   return (
     <>
-      <form>
+      <form onSubmit={submit}>
         <label>
           Ingredient:
-          <input type="text"  />
+          <input type="text"  value={form.ingredients}/>
         </label>
         <button>Add Recipe</button>
       </form>
