@@ -15,7 +15,7 @@ const HomeRouting = () => {
       render={() => {
         if (
           (window.location.href === "http://http://localhost:3000/home" &&
-            "https://front-end-b4xh1g815.vercel.app/home") &&
+            "https://front-end-b4xh1g815.vercel.app/home") &&  
           "https://front-end-o5uieeqbk.vercel.app/"
         ) {
           return (
