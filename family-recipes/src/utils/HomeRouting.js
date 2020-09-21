@@ -17,15 +17,12 @@ const HomeRouting = () => {
           window.location.href === "http://http://localhost:3000/home" &&
           "http://http://localhost:3000/home" &&
           "https://front-end-b4xh1g815.vercel.app/home" &&
-<<<<<<< HEAD
           "https://front-end-o5uieeqbk.vercel.app/"  
-=======
->>>>>>> 54ad2770c9117c6e32abb008f556d798335f9551
         ) {
           return (
             <div>  
               <Home />
-              
+
               <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/sign-up" component={Signup} />
