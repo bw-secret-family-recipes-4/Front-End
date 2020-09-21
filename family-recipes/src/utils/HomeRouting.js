@@ -16,11 +16,11 @@ const HomeRouting = () => {
         if (
           window.location.href === "http://http://localhost:3000/home" &&
           "http://http://localhost:3000/home" &&
-          "https://front-end-b4xh1g815.vercel.app/home" &&
-          "https://front-end-o5uieeqbk.vercel.app/"  
+          "https://secret-family-recipes-4.now.sh/home" &&
+          "https://secret-family-recipes-4.now.sh/"
         ) {
           return (
-            <div>  
+            <div>
               <Home />
 
               <Switch>
