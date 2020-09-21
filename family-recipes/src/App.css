@@ -5,12 +5,11 @@
 .links{
     display: flex;
     width: 100%;
-    /* justify-items: center; */
     flex-direction: row;
 
 }
 .links div{
-    width: 30%;
+    width: 100%;
 }
 
 
