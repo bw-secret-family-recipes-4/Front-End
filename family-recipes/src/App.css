@@ -5,7 +5,6 @@
 .links{
     display: flex;
     width: 100%;
-    /* justify-items: center; */
     flex-direction: row;
 
 }
