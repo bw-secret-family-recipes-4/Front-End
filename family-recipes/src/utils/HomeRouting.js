@@ -20,8 +20,9 @@ const HomeRouting = () => {
           "https://front-end-o5uieeqbk.vercel.app/"  
         ) {
           return (
-            <div>
+            <div>  
               <Home />
+              
               <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/sign-up" component={Signup} />
