@@ -11,66 +11,28 @@ import "../App.css";
 
 const HomeRouting = () => {
   return (
-    <Route
-      render={() => {
-        // <Home />;
-        if (
-          window.location.href === "http://http://localhost:3000" ||
-          "http://http://localhost:3000/home"
-          // "https://secret-family-recipes-4.now.sh/home" &&
-          // "https://secret-family-recipes-4.now.sh/"
-        ) {
-          return (
-            <div>
-              <Home />
-              <div className="links">
-                <div>
-                  <Link to="/home">Home</Link>
-                </div>
-                <div>
-                  <Link to="/login">Login</Link>
-                </div>
-                <div>
-                  <Link to="dashboard">Dashboard</Link>
-                </div>
-              </div>
-              <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/sign-up" component={Signup} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/edit" component={RecipeEdit} />
-                <Route path="/addRecipes" component={AddRecipes} />
-                <Route path="/home" component={Home} />
-              </Switch>
-            </div>
-          );
-        } else {
-          return (
-            <div>
-              <div className="links">
-                <div>
-                  <Link to="/home">Home</Link>
-                </div>
-                <div>
-                  <Link to="/login">Login</Link>
-                </div>
-                <div>
-                  <Link to="dashboard">Dashboard</Link>
-                </div>
-              </div>
-              <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/sign-up" component={Signup} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/edit" component={RecipeEdit} />
-                <Route path="/addRecipes" component={AddRecipes} />
-                <Route path="/home" component={Home} />
-              </Switch>
-            </div>
-          );
-        }
-      }}
-    />
+    <div>
+      <h1>Secret Family Recipes!</h1>
+      <div className="links">
+        <div>
+          <Link to="/">Home</Link>
+        </div>
+        <div>
+          <Link to="/login">Login</Link>
+        </div>
+        <div>
+          <Link to="/dashboard">Dashboard</Link>
+        </div>
+      </div>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/sign-up" component={Signup} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/edit" component={RecipeEdit} />
+        <Route path="/addRecipes" component={AddRecipes} />
+        <Route path="/" component={Home} />
+      </Switch>
+    </div>
   );
 };
 
