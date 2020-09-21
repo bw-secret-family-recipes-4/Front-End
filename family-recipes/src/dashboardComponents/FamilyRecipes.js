@@ -5,9 +5,13 @@ import {Link} from 'react-router-dom'
 const FamilyRecipes = () =>{
     return (
         <>
-        Individualt recipes here
+        Individualt recipes here 
+
+        
 
         <Link to="/edit">Edit</Link>
         </>
     )
 }
+
+export default FamilyRecipes
