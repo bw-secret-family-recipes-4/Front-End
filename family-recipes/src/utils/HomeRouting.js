@@ -13,16 +13,27 @@ const HomeRouting = () => {
   return (
     <Route
       render={() => {
+        // <Home />;
         if (
-          window.location.href === "http://http://localhost:3000/home" &&
-          "http://http://localhost:3000/home" &&
-          "https://secret-family-recipes-4.now.sh/home" &&
-          "https://secret-family-recipes-4.now.sh/"
+          window.location.href === "http://http://localhost:3000" ||
+          "http://http://localhost:3000/home"
+          // "https://secret-family-recipes-4.now.sh/home" &&
+          // "https://secret-family-recipes-4.now.sh/"
         ) {
           return (
             <div>
               <Home />
-
+              <div className="links">
+                <div>
+                  <Link to="/home">Home</Link>
+                </div>
+                <div>
+                  <Link to="/login">Login</Link>
+                </div>
+                <div>
+                  <Link to="dashboard">Dashboard</Link>
+                </div>
+              </div>
               <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/sign-up" component={Signup} />
