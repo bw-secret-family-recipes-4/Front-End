@@ -5,7 +5,7 @@ const initialForm = {
   title: "",
   source: "",
   category: "",
-  ingredient_name: "", //WIll have to loop through
+  ingredient_name: "",
   steps: "",
   user_id: localStorage.getItem("user_id"),
 };
