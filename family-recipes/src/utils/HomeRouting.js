@@ -6,6 +6,7 @@ import Dashboard from "../dashboardComponents/Dashboard";
 import RecipeEdit from "../dashboardComponents/RecipeEdit";
 import AddRecipes from "../dashboardComponents/FamilyRecipesForm";
 import Home from "../components/Home";
+import PrivateRoute from './PrivateRoute'
 
 import "../App.css";
 
@@ -21,13 +22,13 @@ const HomeRouting = () => {
           <Link to="/login">Login</Link>
         </div>
         <div>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/protected">Dashboard</Link>
         </div>
       </div>
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/sign-up" component={Signup} />
-        <Route path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/protected" component={Dashboard} />
         <Route path="/edit" component={RecipeEdit} />
         <Route path="/addRecipes" component={AddRecipes} />
         <Route path="/" component={Home} />
