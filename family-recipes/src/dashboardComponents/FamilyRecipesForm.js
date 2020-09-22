@@ -22,18 +22,6 @@ const AddRecipes = () => {
   };
 
   //Sending the data to the backend
-  const submit = () => {
-    const recipe = {
-      title: form.title.trim(),
-      source: form.source.trim(),
-      category: form.category.trim(),
-      ingredient_name: form.ingredient_name.trim(),
-      steps: form.steps.trim(),
-      user_id: localStorage.getItem("user_id"),
-    };
-    postRecipe(recipe);
-    setform(initialForm);
-  };
 
   const postRecipe = (recipe) => {
     axiosWithAuth()
@@ -44,6 +32,20 @@ const AddRecipes = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const submit = (e) => {
+    e.preventDefault()
+    const recipe = {
+      title: form.title.trim(),
+      source: form.source.trim(),
+      category: form.category.trim(),
+      ingredient_name: form.ingredient_name.trim(),
+      steps: form.steps.trim(),
+      user_id: localStorage.getItem("user_id"),
+    };
+    postRecipe(recipe);
+    setform(initialForm);
   };
   // REMEMBER TO GET USER ID FROM THE LOCAL STORAGE WHEN POSTING OTHER WISE IT WILL FAIL!!!!
   return (
