@@ -1,0 +1,12 @@
+*{
+    text-align: center;
+}
+.dashboard{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-wrap: wrap;
+}
+div{
+    width: 100%;
+}
