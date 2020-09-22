@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import { RecipesContext } from "../utils/RecipesContext";
 
 const initialForm = {
   title: "",
   source: "",
   category: "",
-  ingredient_name: "",
+  ingredients: "",
   steps: "",
   user_id: localStorage.getItem("user_id"),
 };
 
 const AddRecipes = () => {
   const [form, setform] = useState(initialForm);
-
+  const history = useHistory();
+  const { getRecipes } = useContext(RecipesContext);
   // Seting inputs to state.
 
   const formChange = (e) => {
@@ -35,17 +38,19 @@ const AddRecipes = () => {
   };
 
   const submit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const recipe = {
       title: form.title.trim(),
       source: form.source.trim(),
       category: form.category.trim(),
-      ingredient_name: form.ingredient_name.trim(),
+      ingredients: form.ingredients.trim(),
       steps: form.steps.trim(),
       user_id: localStorage.getItem("user_id"),
     };
     postRecipe(recipe);
     setform(initialForm);
+    history.push("/protected");
+    getRecipes();
   };
   // REMEMBER TO GET USER ID FROM THE LOCAL STORAGE WHEN POSTING OTHER WISE IT WILL FAIL!!!!
   return (
@@ -81,8 +86,8 @@ const AddRecipes = () => {
         <textarea
           cols="100"
           row="100"
-          name="ingredient_name"
-          value={form.ingredient_name}
+          name="ingredients"
+          value={form.ingredients}
           placeholder="Type your ingredients here seperated by a coma. EX: sugar, beans, ..."
           onChange={formChange}
         />

@@ -1,42 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { RecipesContext } from "../utils/RecipesContext";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 import "./dashboard.css";
 
 const FamilyRecipes = () => {
-  const [recipes, setRecipes] = useState([]);
+  const history = useHistory();
+  const { recipes, getRecipes } = useContext(RecipesContext);
 
-  const getRecipes = () => {
+  const deleteRecipe = (id) => {
     axiosWithAuth()
-      .get(`/recipes/users/${localStorage.getItem("user_id")}	`)
+      .delete(`/recipes/${id}`)
       .then((res) => {
-        setRecipes(res.data);
-        console.log(res);
+        getRecipes();
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  useEffect(() => {
-    getRecipes();
-  }, []);
   return (
     <>
-      Individualt recipes here
       <div>
         {recipes.map((eachRecipe) => {
           return (
             <div key={eachRecipe.id}>
-              <h1>{eachRecipe.title}</h1>
-              <h2>Author: {eachRecipe.source}</h2>
-              <h3>Category: {eachRecipe.category}</h3>
+              <div onClick={() => history.push(`/recipe/${eachRecipe.id}`)}>
+                <h1>{eachRecipe.title}</h1>
+                <h2>Author: {eachRecipe.source}</h2>
+                <h3>Category: {eachRecipe.category}</h3>
+              </div>
+              <button onClick={() => deleteRecipe(eachRecipe.id)}>
+                Delete
+              </button>
+              <Link to={`/edit/${eachRecipe.id}`}>Edit</Link>
             </div>
           );
         })}
-        <Link to="/edit">Edit</Link>{" "}
-        {/* THis needs to be in the map function for the person*/}
       </div>
     </>
   );
