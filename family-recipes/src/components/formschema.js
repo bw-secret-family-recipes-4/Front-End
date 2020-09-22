@@ -1,7 +1,7 @@
 import * as yup from 'yup'
 
 const formschema = yup.object().shape({
-    name:yup
+    username:yup
     .string()
     .min(2,'Username must be more then one character')
     .required('Username is required'),
