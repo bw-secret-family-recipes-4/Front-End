@@ -62,8 +62,13 @@ const Login = () => {
     axiosWithAuth()
       .post("/auth/login", user)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         localStorage.setItem("token", response.data.token);
+        return response
+      })
+      .then((response) => {
+        // console.log("SOEMTHING IS HERE", response);
+        localStorage.setItem("user_id", response.data.user_id);
       })
       .catch((error) => {
         console.error("Server Error", error);
@@ -96,7 +101,7 @@ const Login = () => {
             onChange={handleC}
           />
           <div>
-            <button disabled={disb} type="submit"  >
+            <button disabled={disb} type="submit">
               Sign In
             </button>
           </div>
