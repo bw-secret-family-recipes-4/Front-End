@@ -5,7 +5,7 @@ const initialForm = {
   title: "",
   source: "",
   category: "",
-  ingredient_name: "",
+  ingredients: "",
   steps: "",
   user_id: localStorage.getItem("user_id"),
 };
@@ -40,7 +40,7 @@ const AddRecipes = () => {
       title: form.title.trim(),
       source: form.source.trim(),
       category: form.category.trim(),
-      ingredient_name: form.ingredient_name.trim(),
+      ingredients: form.ingredients.trim(),
       steps: form.steps.trim(),
       user_id: localStorage.getItem("user_id"),
     };
@@ -82,7 +82,7 @@ const AddRecipes = () => {
           cols="100"
           row="100"
           name="ingredient_name"
-          value={form.ingredient_name}
+          value={form.ingredients}
           placeholder="Type your ingredients here seperated by a coma. EX: sugar, beans, ..."
           onChange={formChange}
         />
