@@ -28,7 +28,7 @@ const HomeRouting = () => {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/sign-up" component={Signup} />
-        <PrivateRoute path="/protected" component={Dashboard} />
+        <PrivateRoute exact path="/protected" component={Dashboard} />
         <Route path="/edit" component={RecipeEdit} />
         <Route path="/addRecipes" component={AddRecipes} />
         <Route path="/" component={Home} />
