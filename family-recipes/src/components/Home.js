@@ -1,32 +1,29 @@
-import Axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 import React, { useEffect, useState } from "react";
-import Cards from './cards'
+import Cards from "./cards";
 
 const Home = () => {
-  const [prc,setprc] = useState([])
-  useEffect(() => {
-    Axios.get(`https://pokeapi.co/api/v2/pokemon-species/?offset=151&limit=20`)
-    .then((res) => {
-      console.log(res)
-      setprc(res.data.results)
-      
-    })
+  const [prc, setprc] = useState([]);
 
-  },[])
-    
-  const newArray = [...prc]
-  console.log(newArray)
-    return (
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/public/recipes")
+      .then((res) => {
+        console.log(res);
+        setprc(res.data);
+      });
+  }, []);
+
+  const newArray = [...prc];
+
+  return (
     <div>
       <h1>Public Recipes</h1>
-      {newArray.map(eachCard => {
-        return(
-          <Cards  data = {eachCard}/>
-        )
+      {newArray.map((eachCard) => {
+        return <Cards key={eachCard.id} data={eachCard} />;
       })}
     </div>
-    )
-
+  );
 };
 
 export default Home;
