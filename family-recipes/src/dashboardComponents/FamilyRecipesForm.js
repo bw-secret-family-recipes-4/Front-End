@@ -1,43 +1,50 @@
 import React, { useState } from "react";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-const initialAuthor = {
+const initialForm = {
   title: "",
   source: "",
   category: "",
+  ingredient_name: "", //WIll have to loop through
+  steps: "",
+  user_id: localStorage.getItem("user_id"),
 };
-const initialIng = {
-  ingredient_name: [], //WIll have to loop through
-};
-const initialInstructions = {
-  instructions: "",
-};
-const AddRecipes = () => {
-  const [form, setform] = useState(initialAuthor);
-  const [Ingredient, setIngredient] = useState(initialIng);
-  const [instructions, setInstrictions] = useState(initialInstructions);
 
-  const submit = () => {
-    setform(initialAuthor);
-    setIngredient(initialIng);
-  };
+const AddRecipes = () => {
+  const [form, setform] = useState(initialForm);
+
+  // Seting inputs to state.
 
   const formChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     setform({ ...form, [name]: value });
   };
-  const ingredientsChange = (e) => {
-    e.preventDefault();
-    const { value } = e.target;
-    setIngredient({ ...Ingredient, ingredient_name: value.split(",") });
+
+  //Sending the data to the backend
+  const submit = () => {
+    const recipe = {
+      title: form.title.trim(),
+      source: form.source.trim(),
+      category: form.category.trim(),
+      ingredient_name: form.ingredient_name.trim(),
+      steps: form.steps.trim(),
+      user_id: localStorage.getItem("user_id"),
+    };
+    postRecipe(recipe);
+    setform(initialForm);
   };
 
-  const instructionChange = (e) => {
-    e.preventDefault();
-    const { value } = e.target;
-    setInstrictions({ ...instructions, instructions: value });
+  const postRecipe = (recipe) => {
+    axiosWithAuth()
+      .post("/recipes", recipe)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
   // REMEMBER TO GET USER ID FROM THE LOCAL STORAGE WHEN POSTING OTHER WISE IT WILL FAIL!!!!
   return (
     <>
@@ -72,17 +79,18 @@ const AddRecipes = () => {
         <textarea
           cols="100"
           row="100"
-          value={Ingredient.ingredient_name}
+          name="ingredient_name"
+          value={form.ingredient_name}
           placeholder="Type your ingredients here seperated by a coma. EX: sugar, beans, ..."
-          onChange={ingredientsChange}
+          onChange={formChange}
         />
         <textarea
           cols="100"
           row="100"
-          // name="instructions"
-          value={instructions.instructions}
+          name="steps"
+          value={form.steps}
           placeholder="Type your instructions here"
-          onChange={instructionChange}
+          onChange={formChange}
         />
         <button>Add Recipe</button>
       </form>
