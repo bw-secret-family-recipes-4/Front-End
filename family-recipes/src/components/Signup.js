@@ -64,7 +64,7 @@ const Signup = () => {
   }
 
   const postUser = (newUser) => {
-    axios.post('https://secret-family-recipes-bw.herokuapp.com/',newUser)
+    axios.post('https://secret-family-recipes-bw.herokuapp.com/auth/register',newUser)
     .then(response => {
       console.log(response)
       
@@ -108,7 +108,7 @@ const Signup = () => {
           />
           <label for = 'Terms of Service'>Terms of Service</label>
           <div>
-            <button disabled = {disb} type = 'submit'>Sign Up</button>
+            <button disabled = {disb} type = 'submit'>Sign Up Here</button>
           </div>
       </form>
   </div>

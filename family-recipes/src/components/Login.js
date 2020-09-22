@@ -57,9 +57,9 @@ const Login = () => {
   }
 
   const postUser = (user) => {
-    axios.post(user)
+    axios.post('https://secret-family-recipes-bw.herokuapp.com/auth/login',user)
     .then(response => {
-
+      console.log(response)
     })
     .catch(error =>{
       console.error('Server Error', error);
@@ -92,7 +92,7 @@ const Login = () => {
         onChange = {handleC}
       /> 
       <div>
-        <button disabled = {disb} type = 'submit'>Sign Up</button>
+        <button disabled = {disb} type = 'submit'>Sign In</button>
       </div>
     </form>
 
