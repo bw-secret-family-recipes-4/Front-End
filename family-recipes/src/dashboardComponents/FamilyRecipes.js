@@ -1,28 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import axiosWithAuth from "../utils/axiosWithAuth";
+import { RecipesContext } from "../utils/RecipesContext";
 
 import "./dashboard.css";
 
 const FamilyRecipes = () => {
   const history = useHistory();
-  const [recipes, setRecipes] = useState([]);
-
-  const getRecipes = () => {
-    axiosWithAuth()
-      .get(`/recipes/users/${localStorage.getItem("user_id")}	`)
-      .then((res) => {
-        setRecipes(res.data);
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    getRecipes();
-  }, []);
+  const { recipes } = useContext(RecipesContext);
+  console.log(recipes);
   return (
     <>
       <div>
