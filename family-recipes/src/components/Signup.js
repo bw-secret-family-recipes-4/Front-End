@@ -64,9 +64,10 @@ const Signup = () => {
   }
 
   const postUser = (newUser) => {
-    axios.post(newUser)
+    axios.post('https://secret-family-recipes-bw.herokuapp.com/',newUser)
     .then(response => {
-
+      console.log(response)
+      
     })
     .catch(error =>{
       console.error('Server Error', error);
@@ -85,7 +86,6 @@ const Signup = () => {
     <div>
       <h2>Sign Up</h2>
       <form onSubmit = {Submit}>
-        
           <input
               name = 'name'
               type = 'text'
