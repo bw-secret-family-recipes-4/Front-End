@@ -17,7 +17,7 @@ const RecipeEdit = () => {
   const [form, setForm] = useState(initialForm);
   const { getRecipes } = useContext(RecipesContext);
   const params = useParams("/edit/:id");
-
+  
   const leave = () => {
     setForm(initialForm);
     history.push("/protected");

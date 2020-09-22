@@ -4,7 +4,6 @@ import "./components.css";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import formschema from "./formschema";
 import * as yup from "yup";
-import { useHistory } from "react-router-dom";
 
 const initial = {
   username: "",
@@ -16,7 +15,6 @@ const errors = {
 };
 
 const Login = () => {
-  const history = useHistory();
   const [content, setContent] = useState(initial);
   const [contentError, setContentError] = useState(errors);
   const [disb, setdisb] = useState(true);
