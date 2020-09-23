@@ -7,8 +7,9 @@ const Cards = props => {
 
         return(
             <div className = 'recipes'>
-                <h2>{data.name}</h2>
-                <p>Fill with data</p>
+                <h2>{data.title}</h2>
+                <h3>{data.category}</h3>
+                <img src = {data.image_url}/>
             </div>
         )
     

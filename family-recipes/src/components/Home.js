@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("/recipes")
+      .get("/public/recipes")
       .then((res) => {
         // console.log(res);
         setprc(res.data);

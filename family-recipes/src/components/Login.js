@@ -110,6 +110,13 @@ const Login = () => {
               Sign In
             </button>
           </div>
+          <div>
+            <div>
+              {contentError.username}
+              <br/>
+              {contentError.password}
+            </div>
+          </div>
         </form>
       </div>
       <h3>Don't have an account?</h3>
