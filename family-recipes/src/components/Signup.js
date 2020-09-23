@@ -16,7 +16,6 @@ const errors = {
   terms: "",
 };
 const Signup = () => {
-  const history = useHistory();
   const [content, setContent] = useState(initial);
   const [contentError, setContentError] = useState(errors);
   const [disb, setdisb] = useState(true);
@@ -96,7 +95,7 @@ const Signup = () => {
           value={content.username}
           onChange={handleC}
         />
-        <br/>
+        <br />
         <input
           name="password"
           type="password"
@@ -104,7 +103,7 @@ const Signup = () => {
           value={content.password}
           onChange={handleC}
         />
-        <br/>
+        <br />
         <input
           name="terms"
           type="checkbox"
@@ -113,16 +112,22 @@ const Signup = () => {
         />
         <label htmlFor="Terms of Service">Terms of Service</label>
         <div>
-          <button disabled={disb} type="submit" onClick = {() => history.push("/login")}>
+          <button
+            disabled={disb}
+            type="submit"
+            onClick={() => {
+              alert.show("Log In Successful!");
+            }}
+          >
             Sign Up
           </button>
         </div>
         <div>
           <div>
             {contentError.username}
-            <br/>
+            <br />
             {contentError.password}
-            <br/>
+            <br />
             {contentError.terms}
           </div>
         </div>
