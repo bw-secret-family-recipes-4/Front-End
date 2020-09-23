@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { RecipesContext } from "../utils/RecipesContext";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import { Button } from "../components.style";
 
-import "./dashboard.css";
+// import "./dashboard.css";
 
 const FamilyRecipes = () => {
   const history = useHistory();
@@ -31,12 +32,12 @@ const FamilyRecipes = () => {
                 <h2>Author: {eachRecipe.source}</h2>
                 <h3>Category: {eachRecipe.category}</h3>
               </div>
-              <button onClick={() => deleteRecipe(eachRecipe.id)}>
+              <Button onClick={() => deleteRecipe(eachRecipe.id)}>
                 Delete
-              </button>
-              <button onClick={() => history.push(`/edit/${eachRecipe.id}`)}>
+              </Button>
+              <Button onClick={() => history.push(`/edit/${eachRecipe.id}`)}>
                 Edit
-              </button>
+              </Button>
             </div>
           );
         })}
