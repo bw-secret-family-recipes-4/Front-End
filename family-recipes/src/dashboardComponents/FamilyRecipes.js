@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { RecipesContext } from "../utils/RecipesContext";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
@@ -34,7 +34,9 @@ const FamilyRecipes = () => {
               <button onClick={() => deleteRecipe(eachRecipe.id)}>
                 Delete
               </button>
-              <Link to={`/edit/${eachRecipe.id}`}>Edit</Link>
+              <button onClick={() => history.push(`/edit/${eachRecipe.id}`)}>
+                Edit
+              </button>
             </div>
           );
         })}

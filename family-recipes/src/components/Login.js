@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./components.css";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import formschema from "./formschema";
 import * as yup from "yup";
+import { useAlert } from "react-alert";
 
 const initial = {
   username: "",
@@ -18,6 +19,8 @@ const Login = () => {
   const [content, setContent] = useState(initial);
   const [contentError, setContentError] = useState(errors);
   const [disb, setdisb] = useState(true);
+  const history = useHistory();
+  const alert = useAlert();
 
   function handleC(event) {
     event.preventDefault();
@@ -55,17 +58,15 @@ const Login = () => {
     setContent(initial);
     postUser(member);
   }
-
   const postUser = (user) => {
     axiosWithAuth()
       .post("/auth/login", user)
       .then((response) => {
-        // console.log(response);
         localStorage.setItem("token", response.data.token);
-        return response
+        history.push("/protected");
+        return response;
       })
       .then((response) => {
-        // console.log("SOEMTHING IS HERE", response);
         localStorage.setItem("user_id", response.data.user_id);
       })
       .catch((error) => {
@@ -99,7 +100,13 @@ const Login = () => {
             onChange={handleC}
           />
           <div>
-            <button disabled={disb} type="submit">
+            <button
+              disabled={disb}
+              type="submit"
+              onClick={() => {
+                alert.show("Log In Successful!");
+              }}
+            >
               Sign In
             </button>
           </div>
