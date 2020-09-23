@@ -5,6 +5,8 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import formschema from "./formschema";
 import * as yup from "yup";
 import { useAlert } from "react-alert";
+// import styled from '@emotion/styled'
+import { Div, Input } from "./components.style";
 
 const initial = {
   username: "",
@@ -82,23 +84,29 @@ const Login = () => {
 
   return (
     <>
-      <div>
+      <Div>
         <h2>Log In</h2>
         <form onSubmit={Submit}>
-          <input
-            name="username"
-            type="text"
-            placeholder="Enter Username"
-            value={content.username}
-            onChange={handleC}
-          />
-          <input
-            name="password"
-            type="password"
-            placeholder="Enter Password"
-            value={content.password}
-            onChange={handleC}
-          />
+          <label>
+            Username:
+            <Input
+              name="username"
+              type="text"
+              placeholder="Enter Username"
+              value={content.username}
+              onChange={handleC}
+            />
+          </label>
+          <label>
+            Password:
+            <Input
+              name="password"
+              type="password"
+              placeholder="Enter Password"
+              value={content.password}
+              onChange={handleC}
+            />
+          </label>
           <div>
             <button
               disabled={disb}
@@ -113,12 +121,12 @@ const Login = () => {
           <div>
             <div>
               {contentError.username}
-              <br/>
+              <br />
               {contentError.password}
             </div>
           </div>
         </form>
-      </div>
+      </Div>
       <h3>Don't have an account?</h3>
       <Link to="/sign-up">Sign Up Here!</Link>
     </>

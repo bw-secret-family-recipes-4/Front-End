@@ -1,7 +1,6 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
 import React, { useEffect, useState } from "react";
 import Cards from "./cards";
-import styled from '@emotion/styled'
 
 const Home = () => {
   const [prc, setprc] = useState([]);
