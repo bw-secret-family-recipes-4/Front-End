@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, Link, Redirect } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import Dashboard from "../dashboardComponents/Dashboard";
@@ -20,7 +20,6 @@ const HomeRouting = () => {
       .get(`/recipes/users/${localStorage.getItem("user_id")}	`)
       .then((res) => {
         setRecipes(res.data);
-        // console.log(res);
       })
       .catch((err) => {
         console.log(err);

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import formschema from "./formschema";
 import * as yup from "yup";
+import { useAlert } from "react-alert";
+import { useHistory } from "react-router-dom";
 
 const initial = {
   username: "",
@@ -17,6 +19,8 @@ const Signup = () => {
   const [content, setContent] = useState(initial);
   const [contentError, setContentError] = useState(errors);
   const [disb, setdisb] = useState(true);
+  const history = useHistory();
+  const alert = useAlert();
 
   function handleC(event) {
     const { name, value } = event.target;
@@ -60,6 +64,7 @@ const Signup = () => {
     }
     setContent(initial);
     postUser(newMember);
+    history.push("/login");
   }
 
   const postUser = (newUser) => {
@@ -105,7 +110,13 @@ const Signup = () => {
         />
         <label htmlFor="Terms of Service">Terms of Service</label>
         <div>
-          <button disabled={disb} type="submit">
+          <button
+            disabled={disb}
+            type="submit"
+            onClick={() => {
+              alert.show("Sign Up Successful!");
+            }}
+          >
             Sign Up
           </button>
         </div>
