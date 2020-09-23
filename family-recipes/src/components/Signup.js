@@ -92,6 +92,7 @@ const Signup = () => {
           value={content.username}
           onChange={handleC}
         />
+        <br/>
         <input
           name="password"
           type="password"
@@ -99,6 +100,7 @@ const Signup = () => {
           value={content.password}
           onChange={handleC}
         />
+        <br/>
         <input
           name="terms"
           type="checkbox"
@@ -110,6 +112,15 @@ const Signup = () => {
           <button disabled={disb} type="submit" onClick = {() => history.push("/login")}>
             Sign Up
           </button>
+        </div>
+        <div>
+          <div>
+            {contentError.username}
+            <br/>
+            {contentError.password}
+            <br/>
+            {contentError.terms}
+          </div>
         </div>
       </form>
     </div>
