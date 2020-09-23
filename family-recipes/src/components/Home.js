@@ -9,7 +9,7 @@ const Home = () => {
     axiosWithAuth()
       .get("/public/recipes")
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setprc(res.data);
       });
   }, []);
