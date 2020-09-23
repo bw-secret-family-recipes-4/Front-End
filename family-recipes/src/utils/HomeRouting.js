@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link, Redirect } from "react-router-dom";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import Dashboard from "../dashboardComponents/Dashboard";
@@ -30,6 +30,12 @@ const HomeRouting = () => {
   useEffect(() => {
     getRecipes();
   }, []);
+
+  // const logOut = () => {
+  //   if (localStorage.clear()) {
+  //     return <Redirect to="/login" />;
+  //   }
+  // };
   return (
     <div>
       <h1>Secret Family Recipes!</h1>
@@ -46,9 +52,9 @@ const HomeRouting = () => {
       </div>
       <RecipesContext.Provider value={{ recipes, getRecipes }}>
         <Switch>
+          <PrivateRoute exact path="/protected" component={Dashboard} />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={Signup} />
-          <PrivateRoute exact path="/protected" component={Dashboard} />
           <Route path="/edit/:id" component={RecipeEdit} />
           <Route path="/addRecipes" component={AddRecipes} />
           <Route path="/recipe/:id" component={Recipe} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./components.css";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import formschema from "./formschema";
@@ -18,6 +18,7 @@ const Login = () => {
   const [content, setContent] = useState(initial);
   const [contentError, setContentError] = useState(errors);
   const [disb, setdisb] = useState(true);
+  const history = useHistory();
 
   function handleC(event) {
     event.preventDefault();
@@ -55,18 +56,20 @@ const Login = () => {
     setContent(initial);
     postUser(member);
   }
-
   const postUser = (user) => {
     axiosWithAuth()
       .post("/auth/login", user)
       .then((response) => {
         // console.log(response);
         localStorage.setItem("token", response.data.token);
-        return response
+        history.push("/protected");
+        return response;
       })
       .then((response) => {
         // console.log("SOEMTHING IS HERE", response);
         localStorage.setItem("user_id", response.data.user_id);
+        alert("Yout have Successfully Logged In!")
+
       })
       .catch((error) => {
         console.error("Server Error", error);
