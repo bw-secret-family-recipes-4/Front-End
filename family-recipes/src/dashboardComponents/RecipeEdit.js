@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { RecipesContext } from "../utils/RecipesContext";
+import { StyledF, LabelText, Button } from "../components.style";
 
 const initialForm = {
   title: "",
@@ -17,7 +18,7 @@ const RecipeEdit = () => {
   const [form, setForm] = useState(initialForm);
   const { getRecipes } = useContext(RecipesContext);
   const params = useParams("/edit/:id");
-  
+
   const leave = () => {
     setForm(initialForm);
     history.push("/protected");
@@ -28,7 +29,6 @@ const RecipeEdit = () => {
       .get(`/recipes/${params.id}`)
       .then((res) => {
         setForm(res.data);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -48,7 +48,6 @@ const RecipeEdit = () => {
     axiosWithAuth()
       .put(`/recipes/${params.id}`, form)
       .then((res) => {
-        console.log(res);
         getRecipes();
       })
       .catch((err) => {
@@ -58,8 +57,8 @@ const RecipeEdit = () => {
   };
   return (
     <>
-      <form onSubmit={() => submit(params)}>
-        <label>
+      <StyledF onSubmit={() => submit(params)}>
+        <LabelText>
           Recipe Name:
           <input
             type="text"
@@ -67,8 +66,8 @@ const RecipeEdit = () => {
             value={form.title}
             onChange={formChange}
           />
-        </label>
-        <label>
+        </LabelText>
+        <LabelText>
           Author:
           <input
             type="text"
@@ -76,8 +75,8 @@ const RecipeEdit = () => {
             value={form.source}
             onChange={formChange}
           />
-        </label>
-        <label>
+        </LabelText>
+        <LabelText>
           Catagory:
           <select name="category" onChange={formChange}>
             <option> Choose A Catagory!</option>
@@ -85,26 +84,28 @@ const RecipeEdit = () => {
             <option value="Home">Home</option>
             <option value="I Have No Idea">I Have No Idea</option>
           </select>
-        </label>
+        </LabelText>
+        Ingredients
         <textarea
           cols="100"
           row="100"
           name="ingredient_name"
           value={form.ingredients}
-          placeholder="Type your ingredients here seperated by a coma. EX: sugar, beans, ..."
+          placeholder="Type your ingredients here..."
           onChange={formChange}
         />
+        Instructions:
         <textarea
           cols="100"
           row="100"
           name="steps"
           value={form.steps}
-          placeholder="Type your instructions here"
+          placeholder="Type your instructions here..."
           onChange={formChange}
         />
-        <button>Submit Edit!</button>
-      </form>
-      <button onClick={leave}>Cancel and Leave</button>
+        <Button>Submit Edit!</Button>
+      </StyledF>
+      <Button onClick={leave}>Cancel and Leave</Button>
     </>
   );
 };

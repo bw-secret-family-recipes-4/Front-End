@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { RecipesContext } from "../utils/RecipesContext";
+import { StyledF, LabelText,Button } from "../components.style";
 
 const initialForm = {
   title: "",
@@ -30,7 +31,6 @@ const AddRecipes = () => {
     axiosWithAuth()
       .post("/recipes", recipe)
       .then((res) => {
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -55,8 +55,8 @@ const AddRecipes = () => {
   // REMEMBER TO GET USER ID FROM THE LOCAL STORAGE WHEN POSTING OTHER WISE IT WILL FAIL!!!!
   return (
     <>
-      <form onSubmit={submit}>
-        <label>
+      <StyledF onSubmit={submit}>
+        <LabelText>
           Recipe Name:
           <input
             type="text"
@@ -64,8 +64,8 @@ const AddRecipes = () => {
             value={form.title}
             onChange={formChange}
           />
-        </label>
-        <label>
+        </LabelText>
+        <LabelText>
           Author:
           <input
             type="text"
@@ -73,8 +73,8 @@ const AddRecipes = () => {
             value={form.source}
             onChange={formChange}
           />
-        </label>
-        <label>
+        </LabelText>
+        <LabelText>
           Catagory:
           <select name="category" onChange={formChange}>
             <option> Choose A Catagory!</option>
@@ -82,15 +82,17 @@ const AddRecipes = () => {
             <option value="Home">Home</option>
             <option value="I Have No Idea">I Have No Idea</option>
           </select>
-        </label>
+        </LabelText>
+        Ingredients
         <textarea
           cols="100"
           row="100"
           name="ingredients"
           value={form.ingredients}
-          placeholder="Type your ingredients here seperated by a coma. EX: sugar, beans, ..."
+          placeholder="Type your ingredients here ..."
           onChange={formChange}
         />
+        Instructions
         <textarea
           cols="100"
           row="100"
@@ -99,8 +101,8 @@ const AddRecipes = () => {
           placeholder="Type your instructions here"
           onChange={formChange}
         />
-        <button>Add Recipe</button>
-      </form>
+        <Button>Add Recipe</Button>
+      </StyledF>
     </>
   );
 };

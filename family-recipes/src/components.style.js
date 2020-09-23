@@ -34,19 +34,32 @@ export const Header = styled.div`
   margin: 2% 0%;
 `;
 
-export const DivLinks  = styled.div`
+export const DivLinks = styled.div`
   display: flex;
   justify-content: space-evenly;
-  padding: .5%;
+  padding: 0.5%;
   background-color: #333333;
   width: 100%;
-`
+`;
 
 export const Button = styled.button`
-padding: 0% 2%;
-width: 10%;
-margin: 0 1%;
-&:hover{
-  background-color: aliceblue;
-}
+  padding: 0% 2%;
+  width: 15%;
+  margin: 1% 1%;
+  &:hover {
+    background-color: aliceblue;
+  }
+`;
+
+export const StyledF = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-conent: center;
+  align-items: center;
+  padding: 2%;
+`;
+
+export const LabelText = styled.label`
+margin: 0.5%;
 `
