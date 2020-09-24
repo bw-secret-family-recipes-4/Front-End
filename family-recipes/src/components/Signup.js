@@ -4,7 +4,7 @@ import formschema from "./formschema";
 import * as yup from "yup";
 import { useAlert } from "react-alert";
 import { useHistory } from "react-router-dom";
-import { Div, Input } from "./components.style";
+import { Div, Label } from "../components.style";
 
 const initial = {
   username: "",
@@ -90,21 +90,27 @@ const Signup = () => {
     <Div>
       <h2>Sign Up</h2>
       <form onSubmit={Submit}>
-        <Input
-          name="username"
-          type="text"
-          placeholder="Enter Username"
-          value={content.username}
-          onChange={handleC}
-        />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Enter Password"
-          value={content.password}
-          onChange={handleC}
-        />
-        <label htmlFor="Terms of Service">
+        <Label>
+          Username:
+          <input
+            name="username"
+            type="text"
+            placeholder="Enter Username"
+            value={content.username}
+            onChange={handleC}
+          />
+        </Label>
+        <Label>
+          Password:
+          <input
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+            value={content.password}
+            onChange={handleC}
+          />
+        </Label>
+        <Label htmlFor="Terms of Service">
           <input
             name="terms"
             type="checkbox"
@@ -112,13 +118,13 @@ const Signup = () => {
             onChange={handleBox}
           />
           Terms of Service
-        </label>
+        </Label>
         <div>
           <button
             disabled={disb}
             type="submit"
             onClick={() => {
-              alert.show("Log In Successful!");
+              alert.show("Sign Up Successful!");
             }}
           >
             Sign Up

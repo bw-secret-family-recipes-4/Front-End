@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import Dashboard from "../dashboardComponents/Dashboard";
@@ -10,7 +10,7 @@ import Recipe from "../dashboardComponents/Recipe";
 import PrivateRoute from "./PrivateRoute";
 import { RecipesContext } from "../utils/RecipesContext";
 import axiosWithAuth from "./axiosWithAuth";
-import "../App.css";
+import { Links, Header, DivLinks } from "../components.style";
 
 const HomeRouting = () => {
   const [recipes, setRecipes] = useState([]);
@@ -25,30 +25,24 @@ const HomeRouting = () => {
         console.log(err);
       });
   };
-  // console.log(recipes);
   useEffect(() => {
     getRecipes();
   }, []);
 
-  // const logOut = () => {
-  //   if (localStorage.clear()) {
-  //     return <Redirect to="/login" />;
-  //   }
-  // };
   return (
-    <div>
+    <Header>
       <h1>Secret Family Recipes!</h1>
-      <div className="links">
-        <div>
+      <Links className="links">
+        <DivLinks>
           <Link to="/">Home</Link>
-        </div>
-        <div>
+        </DivLinks>
+        <DivLinks>
           <Link to="/login">Login</Link>
-        </div>
-        <div>
+        </DivLinks>
+        <DivLinks>
           <Link to="/protected">Dashboard</Link>
-        </div>
-      </div>
+        </DivLinks>
+      </Links>
       <RecipesContext.Provider value={{ recipes, getRecipes }}>
         <Switch>
           <PrivateRoute exact path="/protected" component={Dashboard} />
@@ -60,7 +54,7 @@ const HomeRouting = () => {
           <Route path="/" component={Home} />
         </Switch>
       </RecipesContext.Provider>
-    </div>
+    </Header>
   );
 };
 

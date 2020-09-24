@@ -3,21 +3,10 @@
     background-color: #dad8d8e0;
     font-family: 'Grandstander', cursive;
 }
-.links div{
-    display: flex;
-    justify-content: space-evenly;
-    padding: .5%;
-    background-color: #333333;
-
-}
 .links div a{
     text-decoration: none;
-    background-color: #333333;
+    background-color: #33333342;
     color: #dad8d8e0;
     font-size: 1.2rem;
     padding: 1rem;
 }
-div button:hover{
-    background-color: aliceblue;
-}
-

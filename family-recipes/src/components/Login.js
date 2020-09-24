@@ -5,8 +5,8 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import formschema from "./formschema";
 import * as yup from "yup";
 import { useAlert } from "react-alert";
-// import styled from '@emotion/styled'
-import { Div, Input } from "./components.style";
+import { css } from "emotion";
+import { Div, Label } from "../components.style";
 
 const initial = {
   username: "",
@@ -87,26 +87,26 @@ const Login = () => {
       <Div>
         <h2>Log In</h2>
         <form onSubmit={Submit}>
-          <label>
+          <Label>
             Username:
-            <Input
+            <input
               name="username"
               type="text"
               placeholder="Enter Username"
               value={content.username}
               onChange={handleC}
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             Password:
-            <Input
+            <input
               name="password"
               type="password"
               placeholder="Enter Password"
               value={content.password}
               onChange={handleC}
             />
-          </label>
+          </Label>
           <div>
             <button
               disabled={disb}
@@ -128,7 +128,23 @@ const Login = () => {
         </form>
       </Div>
       <h3>Don't have an account?</h3>
-      <Link to="/sign-up">Sign Up Here!</Link>
+      <Link
+        className={css`
+          text-decoration: none;
+          color: #dad8d8e0;
+          padding: 0.3% 2%;
+          border-radius: 5px;
+          background-color: #33333342;
+          color: #333333;
+          &:hover {
+            color: aliceblue;
+            background-color: #333333;
+          }
+        `}
+        to="/sign-up"
+      >
+        Sign Up Here!
+      </Link>
     </>
   );
 };
