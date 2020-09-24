@@ -59,6 +59,7 @@ const Login = () => {
     }
     setContent(initial);
     postUser(member);
+    history.push("/protected")
   }
   const postUser = (user) => {
     axiosWithAuth()
